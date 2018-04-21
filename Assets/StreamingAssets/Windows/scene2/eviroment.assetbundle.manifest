@@ -1,0 +1,33 @@
+ManifestFileVersion: 0
+CRC: 4235522566
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: b29bd173a0f8d00f303392b38225d541
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 0dfec45243e13c415ac5674c220afef2
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 135
+  Script: {instanceID: 0}
+Assets:
+- Assets/Res/Scene2/Eviroment/Eviroment2.prefab
+- Assets/Res/Scene2/Eviroment/BossEviroment/Eviroment4.prefab
+- Assets/Res/Scene2/Eviroment/Eviroment3.prefab
+- Assets/Res/Scene2/Eviroment/Eviroment1.prefab
+Dependencies: []

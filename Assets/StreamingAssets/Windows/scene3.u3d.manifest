@@ -1,0 +1,14 @@
+ManifestFileVersion: 0
+CRC: 3783098369
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 52aaae5fae6b657c43172aab4f75fd13
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 31d6cfe0d16ae931b73c59d7e0c089c0
+HashAppended: 0
+ClassTypes: []
+Assets:
+- Assets/Res/Scene3/Scene3.unity
+Dependencies: []

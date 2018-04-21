@@ -1,0 +1,22 @@
+ManifestFileVersion: 0
+CRC: 2294800143
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: scene3.u3d
+      Dependencies: {}
+    Info_1:
+      Name: scene2.u3d
+      Dependencies: {}
+    Info_2:
+      Name: scene1/character.assetbundle
+      Dependencies: {}
+    Info_3:
+      Name: scene2/eviroment.assetbundle
+      Dependencies: {}
+    Info_4:
+      Name: scene1.u3d
+      Dependencies: {}
+    Info_5:
+      Name: scene3/animation.assetbundle
+      Dependencies: {}
