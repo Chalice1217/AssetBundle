@@ -68,31 +68,7 @@ public class AssetBundleEditor
 
 
     }
-    /// <summary>
-    /// 7. 保存对应的文件夹名和具体路径 ；
-    /// </summary>
-    private static  void OnWriteConfig(string sceneName , Dictionary<string,string> namePathDic )
-    {
-        string path = PathUtil.GetAssetBundleOutPath() + "/" + sceneName + "Record.config";
-        // Debug.Log(path); // D:/Unity_forWork/Unity_Project/AssetBundle02_Senior/Assets/AssetBundles/Scene3Record.config
-
-        using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write))
-        {
-            using (StreamWriter sw = new StreamWriter(fs))
-            {
-                sw.WriteLine(namePathDic.Count);
-
-
-                foreach (var item in namePathDic)
-                {
-                    sw.WriteLine(item.Key + "--" + item.Value);
-                }  
-            }
-        }
-
-
-    }
-
+  
     /// <summary>
     /// 3. 遍历场景文件夹里的所有文件系统
     /// </summary>
@@ -199,6 +175,33 @@ public class AssetBundleEditor
         }
         
     }
+
+    /// <summary>
+    /// 7. 保存对应的文件夹名和具体路径 ；
+    /// </summary>
+    private static void OnWriteConfig(string sceneName, Dictionary<string, string> namePathDic)
+    {
+        string path = PathUtil.GetAssetBundleOutPath() + "/" + sceneName + "Record.txt";
+        // Debug.Log(path); // D:/Unity_forWork/Unity_Project/AssetBundle02_Senior/Assets/AssetBundles/Scene3Record.config
+
+        using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write))
+        {
+            using (StreamWriter sw = new StreamWriter(fs))
+            {
+                sw.WriteLine(namePathDic.Count);
+
+                foreach (var item in namePathDic)
+                {
+                    sw.WriteLine(item.Key + "--" + item.Value);
+                }
+            }
+        }
+
+
+    }
+
+
+
     #endregion
 
     #region 打包
@@ -219,13 +222,10 @@ public class AssetBundleEditor
     {
         string outPath = PathUtil.GetAssetBundleOutPath();
         Directory.Delete(outPath, true); // 删除 AssetBundle文件夹 , true 强势删除 ;
-        File.Delete(outPath + ".meta"); // unity 自带的 .meta 文件也删掉 ;
+        File.Delete(outPath + ".meta");  // unity 自带的 .meta 文件也删掉[不删会报警告] ;
         AssetDatabase.Refresh();
-
     }
 
     #endregion
-
-
 
 }

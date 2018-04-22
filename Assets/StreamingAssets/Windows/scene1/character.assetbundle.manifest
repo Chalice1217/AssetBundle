@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2477529736
+CRC: 2823175346
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: a619b80f4d8fded0d0d1cb1a97120ae0
+    Hash: 1ab0911e168fbe2effc232384b19cfd7
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 4d90e579baa648a406b7df4d756b75b6
+    Hash: 93bea3c59194061aa2018b1f7751d49c
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -26,6 +26,7 @@ ClassTypes:
 - Class: 65
   Script: {instanceID: 0}
 Assets:
+- Assets/Res/Scene1/Character/Player1_Material.mat
 - Assets/Res/Scene1/Character/Player3.prefab
 - Assets/Res/Scene1/Character/Player1.prefab
 - Assets/Res/Scene1/Character/Player2.prefab

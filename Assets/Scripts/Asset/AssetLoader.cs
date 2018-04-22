@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
-/// 01加载包里的资源
+/// 01
+/// 加载 Asset (加载包里的资源)
 /// 继承 IDisposable 释放资源用
 /// </summary>
 public class AssetLoader:System.IDisposable
@@ -11,11 +12,7 @@ public class AssetLoader:System.IDisposable
     /// 当前资源包
     /// </summary>
     private AssetBundle assetBundle;
-    public AssetBundle AssetBundle
-    {
-        set { assetBundle = value; }
-    }
-
+   
     public AssetLoader(AssetBundle ab)
     {
         this.assetBundle = ab;
@@ -84,7 +81,7 @@ public class AssetLoader:System.IDisposable
 
 
     /// <summary>
-    /// 获取带有子物体的资源
+    /// 获取带有子物体的资源[图集等]
     /// </summary>
     /// <param name="assetName">资源名字</param>
     /// <returns>所有资源</returns>
@@ -141,10 +138,8 @@ public class AssetLoader:System.IDisposable
     public void GetAllAssetNames()
     {
         string[] assetNames = assetBundle.GetAllAssetNames();
-        foreach (string  item in assetNames)
-        {
-            Debug.Log(item);
-        }
+        foreach (string  item in assetNames)      
+            Debug.Log(item);       
     }
 
 

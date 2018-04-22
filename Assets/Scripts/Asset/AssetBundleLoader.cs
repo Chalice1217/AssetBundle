@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
 /// 02
@@ -58,7 +57,6 @@ public class AssetBundleLoader
         this.bundlePath = PathUtil.GetWWWPath() + "/" + bundleName;
         this.www = null;
         this.assetLoader = null;
-
     }
 
 
@@ -69,7 +67,7 @@ public class AssetBundleLoader
     public IEnumerator Load()
     {
         www = new WWW(bundlePath);
-        while (www.isDone)
+        while (!www.isDone)
         {
             progress = www.progress;
             // 每一帧都调用 , 用来更新加载进度
@@ -89,10 +87,8 @@ public class AssetBundleLoader
             //assetLoader.AssetBundle = www.assetBundle;
             // 上面两行代码,用下面的构造方法一行代码即可
             assetLoader = new AssetLoader(www.assetBundle);
-            if (lc != null)
-            {
-                lc(bundleName);
-            }
+            if (lc != null)          
+                lc(bundleName);           
         }
     }
 
@@ -106,7 +102,7 @@ public class AssetBundleLoader
     {
         if (assetLoader == null)
         {
-            Debug.LogError("当前assetLoader为空!" + assetName);
+            Debug.LogError("当前assetLoader为空!" );
             return null;
         }
 
@@ -116,7 +112,7 @@ public class AssetBundleLoader
     /// <summary>
     /// 获取包里的所有资源
     /// </summary>
-    /// <returns></returns>
+    /// <returns>obj类型的数组</returns>
     public Object[] LoadAllAssets()
     {
         if (assetLoader == null)
@@ -136,7 +132,7 @@ public class AssetBundleLoader
     {
         if (assetLoader == null)
         {
-            Debug.LogError("当前assetLoader为空!" + assetName);
+            Debug.LogError("当前assetLoader为空!");
             return null;
         }
 
@@ -146,7 +142,7 @@ public class AssetBundleLoader
     /// <summary>
     /// 卸载资源[Object类型]
     /// </summary>
-    /// <param name="asset"></param>
+    /// <param name="asset">obj</param>
     public void UnloadAsset(Object asset)
     {
         if (assetLoader == null)
@@ -179,7 +175,5 @@ public class AssetBundleLoader
     {
         assetLoader.GetAllAssetNames();
     }
-
-
 
 }

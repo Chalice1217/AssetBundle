@@ -3,6 +3,8 @@ guid: f940406f284182545999699ae612c01e
 timeCreated: 1522380347
 licenseType: Pro
 NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
   userData: 
   assetBundleName: scene1/character
   assetBundleVariant: assetbundle

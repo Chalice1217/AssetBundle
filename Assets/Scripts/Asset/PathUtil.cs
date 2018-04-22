@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System;
+﻿using UnityEngine;
 using System.IO;
 public class PathUtil
 {
@@ -58,7 +55,7 @@ public class PathUtil
     /// 获取对应平台WWW协议路径
     /// </summary>
     /// <returns></returns>
-   public  static string GetWWWPath()
+   public static string GetWWWPath()
     {
         switch (Application.platform)
         {

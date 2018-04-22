@@ -3,6 +3,8 @@ guid: 0a1010c709a141241866b67836609b36
 timeCreated: 1522380513
 licenseType: Pro
 NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
   userData: 
   assetBundleName: scene3/animation
   assetBundleVariant: assetbundle

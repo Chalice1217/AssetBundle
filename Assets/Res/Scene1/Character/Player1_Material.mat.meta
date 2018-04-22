@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f2732137e9e398c49af25f78a887f7ba
-timeCreated: 1522380347
-licenseType: Pro
+guid: 5992d417424c48142b059f78b0711314
+timeCreated: 1524390608
+licenseType: Free
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 0
+  mainObjectFileID: 2100000
   userData: 
   assetBundleName: scene1/character
   assetBundleVariant: assetbundle

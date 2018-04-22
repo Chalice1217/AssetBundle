@@ -53,7 +53,7 @@ public class AssetBundleRelation
     /// <summary>
     /// 加载完成的回调
     /// </summary>
-    /// <param name="bundleName"></param>
+    /// <param name="bundleName">包名</param>
     private void OnLoadComplete(string bundleName)
     {
         this.isFinish = true;
@@ -78,7 +78,7 @@ public class AssetBundleRelation
     /// <summary>
     /// 添加依赖关系
     /// </summary>
-    /// <param name="bundleName"></param>
+    /// <param name="bundleName">包名</param>
     public void AddDependence(string bundleName)
     {
         if (string.IsNullOrEmpty(bundleName))
@@ -120,7 +120,7 @@ public class AssetBundleRelation
     /// <summary>
     /// 添加被依赖关系
     /// </summary>
-    /// <param name="bundleName"></param>
+    /// <param name="bundleName">包名</param>
     public void AddReference(string bundleName)
     {
         if (string.IsNullOrEmpty(bundleName))
