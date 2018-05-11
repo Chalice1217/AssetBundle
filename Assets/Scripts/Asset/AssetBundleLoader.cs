@@ -63,30 +63,37 @@ public class AssetBundleLoader
     /// <summary>
     /// 加载资源包
     /// </summary>
-    /// <returns></returns>
+    /// <returns>www.assetBundle</returns>
     public IEnumerator Load()
     {
+        // 注 : 如果发布到手机端,就不需要www加载了,通过下面方式加载:
+        // AssetBundleCreateRequest abcr = AssetBundle.LoadFromFileAsync(bundlePath);
+        //  yield return abcr;
+
+
         www = new WWW(bundlePath);
         while (!www.isDone)
         {
-            progress = www.progress;
+            this.progress = www.progress;
             // 每一帧都调用 , 用来更新加载进度
-            if (lp != null)
-            {
+            if (lp != null)           
                 lp(bundleName, progress);
-            }
+            
             yield return www;
         }
 
-        progress = www.progress;
+        this. progress = www.progress;
 
         // 加载完成了
         if (progress >= 1f)
-        {
-            //assetLoader = new AssetLoader();
-            //assetLoader.AssetBundle = www.assetBundle;
+        {           
             // 上面两行代码,用下面的构造方法一行代码即可
             assetLoader = new AssetLoader(www.assetBundle);
+
+            // 每一帧都调用 , 用来更新加载进度
+            if (lp != null)
+                lp(bundleName, progress);
+
             if (lc != null)          
                 lc(bundleName);           
         }

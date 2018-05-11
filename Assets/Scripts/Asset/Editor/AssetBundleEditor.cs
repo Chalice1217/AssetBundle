@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Security.Cryptography;
+using System.Text;
 using UnityEditor;
 using UnityEngine;
 /// <summary>
@@ -224,6 +226,105 @@ public class AssetBundleEditor
         Directory.Delete(outPath, true); // 删除 AssetBundle文件夹 , true 强势删除 ;
         File.Delete(outPath + ".meta");  // unity 自带的 .meta 文件也删掉[不删会报警告] ;
         AssetDatabase.Refresh();
+    }
+
+    #endregion
+
+    #region 生成MD5文件
+    [MenuItem("AssetBundle/CreateMD5File(生成MD5文件)")]
+    private static void CreateFile()
+    {
+        // outPath = E:/Shuai/AssetBundle/Assets/StreamingAssets/Windows
+        string outPath = PathUtil.GetAssetBundleOutPath();  
+        string filePath = outPath + "/" + "file.txt";
+        if (File.Exists(filePath))      
+            File.Delete(filePath);
+
+        List<string> fileList = new List<string>();
+        // file.txt文件,让它生成在Assets/StreamingAssets/windows 下
+        DirectoryInfo directoryInfo = new DirectoryInfo(outPath);
+        // 调用ListFiles()方法 ,遍历文件夹下的文件 -> 存到 fileList 里
+        ListFiles(directoryInfo, ref fileList);
+
+        FileStream fs = new FileStream(filePath, FileMode.CreateNew);
+        StreamWriter sw = new StreamWriter(fs);
+
+        for (int i = 0; i < fileList.Count; i++)
+        {
+            string extension = Path.GetExtension(fileList[i]);
+            if (extension.EndsWith(".meta"))
+                continue;
+
+            // 生成文件 MD5 值
+            string md5 = GetFileMD5(fileList[i]);
+
+            // E:/ Shuai / AssetBundle / Assets / StreamingAssets / Windows / Scene1 / Player1
+            string value = fileList[i].Replace(outPath + "/", string.Empty);
+            // value = Scene1 / Player1 , 前面的都不要了
+            sw.WriteLine(value + "|" + md5);
+
+        }
+
+        sw.Close();
+        fs.Close();
+
+        AssetDatabase.Refresh();
+
+    }
+
+    /// <summary>
+    /// 遍历文件夹下所有的文件
+    /// </summary>
+    /// <param name="fileSystemInfo"></param>
+    /// <param name="list"></param>
+    private static void ListFiles(FileSystemInfo fileSystemInfo , ref List<string> list)
+    {
+        if (fileSystemInfo.Extension == ".meta")
+            return;
+
+        DirectoryInfo directoryInfo =  fileSystemInfo as DirectoryInfo;
+        FileSystemInfo[] fileSystemInfoArr = directoryInfo.GetFileSystemInfos();
+
+        foreach (FileSystemInfo item in fileSystemInfoArr)
+        {
+            FileInfo fileInfoItem = item as FileInfo;
+
+            // fileInfoItem != null 就是文件,就把该文件加到list里
+            if (fileInfoItem != null)
+            {
+                list.Add(fileInfoItem.FullName.Replace("\\", "/"));
+            }
+            else // fileInfoItem == null 就是文件夹, 递归调用自己,再从该文件夹里遍历所有文件
+            {
+                ListFiles(item, ref list);
+            }
+
+        }
+                      
+    }
+
+    /// <summary>
+    /// 获取文件 MD5 值
+    /// </summary>
+    /// <param name="filePath"></param>
+    /// <returns></returns>
+    private static string GetFileMD5(string filePath)
+    {
+        FileStream fs = new FileStream(filePath, FileMode.Open);
+
+        // 引入命名空间   using System.Security.Cryptography;
+        MD5 md5 = new MD5CryptoServiceProvider();
+
+        byte[] bt =  md5.ComputeHash(fs);
+        fs.Close();
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < bt.Length; i++)
+        {
+            sb.Append(bt[i].ToString("x2"));
+        }
+
+        return sb.ToString();
     }
 
     #endregion

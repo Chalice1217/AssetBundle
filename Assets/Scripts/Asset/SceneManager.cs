@@ -79,7 +79,7 @@ public class SceneManager
     /// <param name="sceneName"></param>
     public void ReadRecord(string sceneName)
     {
-        string path = PathUtil.GetAssetBundleOutPath() + "/" + sceneName + "Record.config";
+        string path = PathUtil.GetAssetBundleOutPath() + "/" + sceneName + "Record.txt";
 
         using (FileStream fs = new FileStream(path,FileMode.Open,FileAccess.Read))
         {

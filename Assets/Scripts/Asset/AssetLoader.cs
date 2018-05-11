@@ -12,7 +12,7 @@ public class AssetLoader:System.IDisposable
     /// 当前资源包
     /// </summary>
     private AssetBundle assetBundle;
-   
+
     public AssetLoader(AssetBundle ab)
     {
         this.assetBundle = ab;
