@@ -1,7 +1,7 @@
 
 
 
-print("ÔÚÄã¿´µ½ÕâĞĞ×ÖµÄÊ±ºò,ÄãµÄC#µ÷lua²âÊÔÒÑ¾­³É¹¦ÁË!")
+print("åœ¨ä½ çœ‹åˆ°è¿™è¡Œå­—çš„æ—¶å€™,ä½ çš„C#è°ƒluaæµ‹è¯•å·²ç»æˆåŠŸäº†!")
 
 GameInit = {}
 
@@ -16,8 +16,8 @@ GameInit.lp = function(name,progress)
 
   if progress >= 1 then 
     local prefab = CS.AssetBundleManager.Instance:LoadAsset("Main","UI","gonggaoCanvas")
-	local ggCanvas = CS.UnityEngine.Object.Instantiate(prefab)
-   -- ggCanvas.transform:Find("bg/ContentTxt"):GetComponent("Text").text = "555555"
+    local ggCanvas = CS.UnityEngine.Object.Instantiate(prefab)
+    --ggCanvas.transform:Find("bg/ContentTxt"):GetComponent("Text").text = "åœ¨ä½ çœ‹åˆ°è¿™è¡Œå­—çš„æ—¶å€™,ä½ å·²ç»çƒ­æ›´æˆåŠŸäº†\n ä½ æ˜¯æœ‰å¤šdiao ???"
   end
 end
 

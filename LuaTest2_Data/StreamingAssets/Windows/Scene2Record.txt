@@ -1,0 +1,4 @@
+3
+Eviroment--scene2/eviroment.assetbundle
+NPC--scene2/npc.assetbundle
+Scene2--scene2.u3d

@@ -1,3 +1,4 @@
+Lua/GameInit.lua.txt|904c85bd16d2704f9bd3a620470ffa96
 main/ui.assetbundle|a2c4f646c380793691eefcfc78762554
 main/ui.assetbundle.manifest|4ea0339efea8ebe95233c10e6672743d
 scene1/character.assetbundle|2503fdd66fea3185fa83930bc972bad2
