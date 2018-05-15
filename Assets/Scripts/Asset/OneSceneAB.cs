@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XLua;
 /// <summary>
 /// 05
 /// 控制一个场景里面所有的资源包
@@ -70,7 +71,7 @@ public class OneSceneAB
     /// <param name="bundleName"></param>
     /// <param name="lp"></param>
     /// <param name="labcb"></param>
-    public void LoadAssetBundle(string bundleName,LoadProgress lp,LoadAssetBundleCallback labcb)
+    public void LoadAssetBundle(string bundleName, LuaFunction lp,LoadAssetBundleCallback labcb)
     {
         if (nameBundleDic.ContainsKey(bundleName))
         {
@@ -133,7 +134,7 @@ public class OneSceneAB
     /// <param name="referenceBundleName">被依赖的包名</param>
     /// <param name="lp">进度回调</param>
     /// <returns></returns>
-    private IEnumerator LoadDependence(string bundleName,string referenceBundleName, LoadProgress lp)
+    private IEnumerator LoadDependence(string bundleName,string referenceBundleName, LuaFunction lp)
     {
         if (nameBundleDic.ContainsKey(bundleName))
         {

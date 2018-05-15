@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XLua;
 /// <summary>
 /// AssetBundle管理类
 /// </summary>
+[XLua.LuaCallCSharp]
 public class AssetBundleManager : MonoBehaviour
 {
 
@@ -29,7 +31,7 @@ public class AssetBundleManager : MonoBehaviour
     /// <param name="sceneName"></param>
     /// <param name="folderName"></param>
     /// <param name="lp"></param>
-    public void LoadAssetBundle(string sceneName,string folderName, LoadProgress lp)
+    public void LoadAssetBundle(string sceneName,string folderName, LuaFunction lp)
     {
         if (!nameSceneDic.ContainsKey(sceneName))
         {
@@ -40,8 +42,6 @@ public class AssetBundleManager : MonoBehaviour
         SceneManager sm = nameSceneDic[sceneName];
         // 开始加载资源包
         sm.LoadAssetBundle(folderName, lp, LoadAssetBundleCallBack);
-
-
 
     }
 

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using XLua;
 /// <summary>
 /// 02
 /// 加载AssetBundle
@@ -34,7 +35,7 @@ public class AssetBundleLoader
     /// <summary>
     /// 加载进度回调
     /// </summary>
-    private LoadProgress lp;
+    private LuaFunction lp;
 
     /// <summary>
     /// 加载完成回调
@@ -47,7 +48,7 @@ public class AssetBundleLoader
     /// <param name="lc"></param>
     /// <param name="lp"></param>
     /// <param name="bundleName"></param>
-    public AssetBundleLoader(LoadComplete lc, LoadProgress lp, string bundleName)
+    public AssetBundleLoader(LoadComplete lc, LuaFunction lp, string bundleName)
     {
         this.lc = lc;
         this.lp = lp;
@@ -77,7 +78,7 @@ public class AssetBundleLoader
             this.progress = www.progress;
             // 每一帧都调用 , 用来更新加载进度
             if (lp != null)           
-                lp(bundleName, progress);
+                lp.Call(bundleName, progress);
             
             yield return www;
         }
@@ -92,7 +93,7 @@ public class AssetBundleLoader
 
             // 每一帧都调用 , 用来更新加载进度
             if (lp != null)
-                lp(bundleName, progress);
+                lp.Call(bundleName, progress);
 
             if (lc != null)          
                 lc(bundleName);           

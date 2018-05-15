@@ -78,11 +78,9 @@ public class AssetBundleEditor
     /// <param name="sceneName">场景名字</param>
     private static void OnSceneFileSystemInfo(FileSystemInfo fileSystemInfo , string sceneName, Dictionary<string, string> namePathDic)
     {
-        if (!fileSystemInfo.Exists)
-        {
+        if (!fileSystemInfo.Exists)      
             Debug.LogError(fileSystemInfo.FullName + "不存在！");
-        }
-
+        
         DirectoryInfo directoryInfo = fileSystemInfo as DirectoryInfo;
          // 获取所有文件系统[包括文件夹和文件]
        FileSystemInfo[] fileSystemInfos =  directoryInfo.GetFileSystemInfos();

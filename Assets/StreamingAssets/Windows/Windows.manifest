@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 2712355238
+CRC: 4158278704
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -25,4 +25,7 @@ AssetBundleManifest:
       Dependencies: {}
     Info_7:
       Name: scene2/eviroment.assetbundle
+      Dependencies: {}
+    Info_8:
+      Name: main/ui.assetbundle
       Dependencies: {}

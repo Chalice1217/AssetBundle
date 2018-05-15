@@ -6,7 +6,7 @@ public class Test : MonoBehaviour
 {
     private void Start()
     {
-        AssetBundleManager.Instance.LoadAssetBundle("Scene1", "Character", LoadProgress);
+      //  AssetBundleManager.Instance.LoadAssetBundle("Scene1", "Character", LoadProgress);
       
     }
 
@@ -14,8 +14,7 @@ public class Test : MonoBehaviour
     {
         Debug.Log(progress + "---" + bundleName);
         if (progress >=1)     
-           Instantiate( AssetBundleManager.Instance.LoadAsset("Scene1", "Character", "Player2"));
-        
+           Instantiate( AssetBundleManager.Instance.LoadAsset("Scene1", "Character", "Player2"));        
     }
 
 

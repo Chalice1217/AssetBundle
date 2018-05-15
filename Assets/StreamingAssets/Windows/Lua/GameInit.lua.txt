@@ -1,0 +1,26 @@
+
+
+
+print("在你看到这行字的时候,你的C#调lua测试已经成功了!")
+
+GameInit = {}
+
+local this = GameInit
+
+function GameInit:GetInstance()
+  return this 
+end 
+
+GameInit.lp = function(name,progress)
+  print(name , progress)
+
+  if progress >= 1 then 
+    local prefab = CS.AssetBundleManager.Instance:LoadAsset("Main","UI","gonggaoCanvas")
+	local ggCanvas = CS.UnityEngine.Object.Instantiate(prefab)
+   -- ggCanvas.transform:Find("bg/ContentTxt"):GetComponent("Text").text = "555555"
+  end
+end
+
+function GameInit:Init()
+  CS.AssetBundleManager.Instance:LoadAssetBundle("Main","UI",this.lp)
+end 

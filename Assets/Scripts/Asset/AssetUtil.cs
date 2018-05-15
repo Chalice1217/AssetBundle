@@ -8,6 +8,7 @@ using System.Text;
 /// </summary>
 /// <param name="bundleName">包名</param>
 /// <param name="progress">加载进度</param>
+[XLua.LuaCallCSharp]
 public delegate void LoadProgress(string bundleName, float progress);
 
 /// <summary>

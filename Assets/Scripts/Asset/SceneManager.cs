@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using XLua;
 /// <summary>
 /// 场景里面所有包的管理器
 /// 转换包名[文件夹名 -> 包名]
@@ -123,7 +124,7 @@ public class SceneManager
     /// <param name="folderName">文件夹名</param>
     /// <param name="lp"></param>
     /// <param name="labcb"></param>
-    public void LoadAssetBundle(string folderName,LoadProgress lp, LoadAssetBundleCallback labcb)
+    public void LoadAssetBundle(string folderName, LuaFunction lp, LoadAssetBundleCallback labcb)
     {
         if (folderDic.ContainsKey(folderName))
         {

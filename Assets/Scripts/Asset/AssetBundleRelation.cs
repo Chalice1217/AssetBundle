@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XLua;
 /// <summary>
 /// 03
 /// 管理资源包的依赖关系
@@ -24,9 +25,9 @@ public class AssetBundleRelation
     /// <summary>
     /// 加载进度回调
     /// </summary>
-    private LoadProgress lp;
+    private LuaFunction lp;
 
-    public LoadProgress Lp
+    public LuaFunction Lp
     {
         get { return lp; }
     }
@@ -40,7 +41,7 @@ public class AssetBundleRelation
         get { return isFinish; }
     }
   
-    public AssetBundleRelation(string bundleName,LoadProgress lp)
+    public AssetBundleRelation(string bundleName, LuaFunction lp)
     {
         this.bundleName = bundleName;
         this.lp = lp;
