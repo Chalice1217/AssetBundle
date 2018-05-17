@@ -12,6 +12,8 @@ public class LuaManager : MonoBehaviour
 
     LuaEnv luaEnv = new LuaEnv();
 
+    private byte[] Bytes;
+
     private void Awake()
     {
         Instance = this;
@@ -54,6 +56,7 @@ public class LuaManager : MonoBehaviour
 
     private byte[] CustomLoader( ref string fileName)
     {
+        Bytes = null;
         // 获取lua所在目录(一般在从服务器下载的AssetBundle目录下(我的是在Windows目录下))
         string luaPath = PathUtil.GetAssetBundleOutPath() + "/" + "Lua";
        
@@ -61,8 +64,9 @@ public class LuaManager : MonoBehaviour
         if (luaDic.ContainsKey(fileName))
             return luaDic[fileName];
 
-        return ProcessDirectory(new DirectoryInfo(luaPath), fileName);
+        ProcessDirectory(new DirectoryInfo(luaPath), fileName);
 
+        return Bytes;
     }
 
     /// <summary>
@@ -71,8 +75,9 @@ public class LuaManager : MonoBehaviour
     /// <param name="fileSystemInfo"></param>
     /// <param name="fileName"></param>
     /// <returns></returns>
-    private byte[] ProcessDirectory(FileSystemInfo fileSystemInfo,string fileName)
+    private void  ProcessDirectory(FileSystemInfo fileSystemInfo,string fileName)
     {
+        
         DirectoryInfo directoryInfo = fileSystemInfo as DirectoryInfo;
         FileSystemInfo[] fileSystemInfos = directoryInfo.GetFileSystemInfos();
 
@@ -88,14 +93,14 @@ public class LuaManager : MonoBehaviour
                 if (item.Extension == ".meta" || tempName != fileName)
                     continue;
 
-                byte[] bytes = File.ReadAllBytes(file.FullName);
-                luaDic.Add(fileName, bytes);
-                return bytes;
+                Bytes = File.ReadAllBytes(file.FullName);
+                luaDic.Add(fileName, Bytes);
+                
             }
 
         }
 
-        return null;
+       
     }
 
 
